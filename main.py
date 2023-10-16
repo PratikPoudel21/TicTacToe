@@ -46,9 +46,5 @@ while running:
                     print("8")
                 elif x > 400 and x <= 600 and y > 400 and y <= 600:
                     print("9")
-                
-    
 
     pygame.display.flip()
-
-
