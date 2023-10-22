@@ -36,7 +36,6 @@ def restart():
     pygame.draw.line(screen, (0, 0, 0), (0, HEIGHT - HEIGHT / 3), (WIDTH, HEIGHT - HEIGHT / 3), 4) # second
 
 def draw_text(text, text_col,font_size, x, y):
-    min = WIDTH if WIDTH < HEIGHT else HEIGHT 
     font = pygame.font.SysFont( "Arial", font_size )
     img = font.render(text, True, text_col)
     rect = img.get_rect()
