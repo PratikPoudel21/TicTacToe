@@ -1,4 +1,5 @@
 import pygame
+import os
 from pygame.locals import *
 
 pygame.init() 
@@ -34,6 +35,7 @@ def restart():
     # horizontal lines
     pygame.draw.line(screen, (0, 0, 0), (0, HEIGHT / 3), (WIDTH, HEIGHT / 3), 4) # first
     pygame.draw.line(screen, (0, 0, 0), (0, HEIGHT - HEIGHT / 3), (WIDTH, HEIGHT - HEIGHT / 3), 4) # second
+    os.system("cls")
 
 def draw_text(text, text_col,font_size, x, y):
     font = pygame.font.SysFont( "Arial", font_size )
@@ -75,7 +77,7 @@ def mark(x, y, turn):
         if board[0][2] == 0:
             draw_text(turn, (0, 0, 0), int(min/3), WIDTH - WIDTH / 6, HEIGHT / 6)
             board[0][2] = turn
-            if (board[0][1] == board[0][2] == turn) or (board[1][1] == board[2][0] == turn) or (board[1][2] == board[2][2] == turn): 
+            if (board[0][0] == board[0][1] == turn) or (board[1][1] == board[2][0] == turn) or (board[1][2] == board[2][2] == turn): 
                 gameover = True
                 gameOver(turn)
             turn =  "O" if turn == "X" else "X"
@@ -164,7 +166,16 @@ while running:
             if event.button == 1:
                 x, y = pygame.mouse.get_pos()
                 turn, GAMEOVER = mark(x, y, turn)
+
                 
+                print("-------------")
+                for i in range(3):
+                    for j in range(3):
+                        print(f"| {board[i][j]}", end=" ")
+                    print("| \n", end="")
+                    print("-------------")
+                print("\n", end="")
+
     pygame.display.flip()
 
 pygame.quit()
